@@ -33,10 +33,10 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::min(10)
-                ->mixedCase()
-                ->numbers()
-                ->uncompromised(), // Check if the password has been exposed in a data breach
+            'password' => ['required', 'confirmed', Rules\Password::min(10) //sets the minimum size for the password.
+                ->mixedCase() //Makes the password require at least one uppercase and one lowercase letter.
+                ->numbers() //Makes the password require at least one number.
+                ->uncompromised(), // Check if the password has been exposed in a data breach.
             ],
         ]);
 
